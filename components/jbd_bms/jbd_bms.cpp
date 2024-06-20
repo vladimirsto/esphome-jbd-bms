@@ -75,7 +75,7 @@ void JbdBms::loop() {
 void JbdBms::update() {
   this->track_online_status_();
   this->send_command_(JBD_CMD_READ, JBD_CMD_HWINFO);
-
+  this->on_jbd_bms_data_(JBD_CMD_CELLINFO, {0x0F, 0x45, 0x0F, 0x3D, 0x0F, 0x37, 0x0F, 0x3D});
   if (this->enable_fake_traffic_) {
     // Start: 0xDD 0x03 0x00 0x1D
     this->on_jbd_bms_data_(JBD_CMD_HWINFO,
